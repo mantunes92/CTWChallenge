@@ -71,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				418113B022949C940080FB01 /* README.md */,
+				418113AE22949C220080FB01 /* Configuration */,
 				418113932294967F0080FB01 /* CTWChallenge */,
 				418113922294967F0080FB01 /* Products */,
 			);
@@ -87,7 +88,6 @@
 		418113932294967F0080FB01 /* CTWChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				418113AE22949C220080FB01 /* Configuration */,
 				418113942294967F0080FB01 /* AppDelegate.swift */,
 				41B882B02295F7A200FF4C33 /* AppCoordinator.swift */,
 				418113BD22949EF40080FB01 /* Source */,
