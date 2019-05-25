@@ -1,0 +1,20 @@
+//
+//  prd.xcconfig
+//  CTWChallenge
+//
+//  Created by Marcelo Antunes on 5/25/19.
+//  Copyright © 2019 Marcelo Antunes. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "base.xcconfig"
+
+// GEOCODER_AUTOCOMPLETE_API
+GEOCODER_AUTOCOMPLETE_BASE_URL = http:/$()/autocomplete.geocoder.api.here.com
+GEOCODER_AUTOCOMPLETE_SUGGESTIONS_PATH = /6.2/suggest.json
+
+// GEOCODER_API
+GEOCODER_BASE_URL = https:/$()/geocoder.api.here.com
+GEOCODER_PATH = /6.2/geocode.json

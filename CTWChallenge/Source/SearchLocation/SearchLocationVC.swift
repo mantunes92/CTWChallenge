@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Data
+import RxSwift
 
 protocol SearchLocationNavigationDelegate: class {
     // Definition of navigation methods
@@ -25,11 +27,22 @@ class SearchLocationVC: UIViewController {
         bindViewModel()
     }
 
+    let repo = RepositoryProviderImpl()
+    let disposeBag = DisposeBag()
     private func bindViewModel() {
         assert(viewModel != nil, "viewModel cannot be nil")
         let input = SearchLocationVM.Input()
 
         let output = viewModel.transform(input: input)
+
+//        VALIDAR OBJECTOS API
+        repo.makeLocationRepository().getLocations(named: "t")
+            .subscribe(onSuccess: { result in
+                print("SUCESSO")
+            }) { error in
+                print("ERRO -> \(error.localizedDescription)" )
+        }
+        .disposed(by: disposeBag)
 
     }
 }
