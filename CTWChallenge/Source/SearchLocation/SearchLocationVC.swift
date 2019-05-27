@@ -10,6 +10,8 @@ import UIKit
 import Domain
 import Data
 import RxSwift
+import RxCocoa
+import RxDataSources
 
 protocol SearchLocationNavigationDelegate: class {
     // Definition of navigation methods
@@ -17,10 +19,16 @@ protocol SearchLocationNavigationDelegate: class {
 
 class SearchLocationVC: UIViewController {
 
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var tableView: UITableView!
+
     //This viewModel is injected by SearchLocationCoordinator
     var viewModel: SearchLocationVM!
-
     weak var navigationDelegate: SearchLocationNavigationDelegate?
+
+    typealias Section = AnimatableSectionModel<String, Suggestion>
+
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,32 +36,63 @@ class SearchLocationVC: UIViewController {
         bindViewModel()
     }
 
-    let repo: RepositoryProvider = RepositoryProviderImpl()
-    let disposeBag = DisposeBag()
     private func bindViewModel() {
         assert(viewModel != nil, "viewModel cannot be nil")
-        let input = SearchLocationVM.Input()
+        let textFilter = searchBar.rx.text.asDriver()
+        let input = SearchLocationVM.Input(textFilter: textFilter)
 
         let output = viewModel.transform(input: input)
 
+        bindToTableView(output.tableItems)
 
-        //        repo.makeSuggestionsRepository().getLocations(named: "t")
-        //            .subscribe(onSuccess: { result in
-        //                print("SUCESSO")
-        //            }) { error in
-        //                print("ERRO -> \(error.localizedDescription)" )
-        //        }
-        //        .disposed(by: disposeBag)
-
-        repo.makeLocationDetailRepository().getLocationDetail(id: "NT_Opil2LPZVRLZjlWNLJQuWB_0ITN",
-                                                              position: Position(latitude: 2,
-                                                                                 longitude: 2))
-            .subscribe(onNext: { result in
-                print("SUCESSO")
-            }, onError: { error in
-                print("ERRO -> \(error.localizedDescription)" )
-            })
+        output.error
+            .drive(onNext: showError)
             .disposed(by: disposeBag)
 
+        output.isLoading
+            .drive(onNext: handleLoading)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindToTableView(_ tableItems: Driver<[Suggestion]>) {
+        tableView.register(UINib(nibName: SearchTableViewCell.name, bundle: Bundle.main),
+                           forCellReuseIdentifier: SearchTableViewCell.name)
+
+        let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: configureCell)
+
+        tableItems
+            .map { [Section(model: "Suggestions", items: $0)] }
+            .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+    }
+
+    private func configureCell(dataSource: TableViewSectionedDataSource<Section>,
+                               tableView: UITableView,
+                               indexPath: IndexPath,
+                               item: Suggestion) -> UITableViewCell {
+        weak var _self = self
+        guard let self = _self else { return UITableViewCell() }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.name,
+                                                 for: indexPath) as! SearchTableViewCell
+        cell.titleLabel.text = item.label
+
+        return cell
+    }
+
+    private func showError(_ error: Error) {
+        let alertVC = UIAlertController(title: "Error",
+                                        message: error.localizedDescription,
+                                        preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+
+    private func handleLoading(_ bool: Bool) {
+        bool ? view.showLoading() : view.hideLoading()
     }
 }

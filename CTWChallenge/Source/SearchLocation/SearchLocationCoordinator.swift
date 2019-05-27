@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Domain
+import Data
 
 class SearchLocationCoordinator: Coordinator {
     let navigationType: NavigationType
     var childCoordinators: [Coordinator]
 
     weak var delegate: CoordinatorDelegate?
+
+    private let repoProvider: RepositoryProvider = RepositoryProviderImpl()
 
     init(navigationController: UINavigationController, delegate: CoordinatorDelegate? = nil) {
         self.navigationType = .navigationController(navigationController)
@@ -22,7 +26,7 @@ class SearchLocationCoordinator: Coordinator {
 
     func execute() {
         let searchLocationVC = SearchLocationVC.makeFromXib()
-        searchLocationVC.viewModel = SearchLocationVM()
+        searchLocationVC.viewModel = SearchLocationVM(repo: repoProvider.makeSuggestionsRepository())
         searchLocationVC.navigationDelegate = self
 
         navigationController?.setViewControllers([searchLocationVC], animated: false)

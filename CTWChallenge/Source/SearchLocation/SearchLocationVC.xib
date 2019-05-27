@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchLocationVC" customModule="CTWChallenge" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="dHC-Kq-xpD" id="xi0-9d-GP2"/>
+                <outlet property="tableView" destination="26S-bD-ERC" id="jcn-Ze-NF7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="T4c-Xx-G2o"/>
             </connections>
         </placeholder>
