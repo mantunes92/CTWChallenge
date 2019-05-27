@@ -1,0 +1,11 @@
+# MOYA
+github "Moya/Moya" == 13.0.1
+
+# Realm
+github "realm/realm-cocoa" == 3.15.0
+
+# RxRealm
+github "RxSwiftCommunity/RxRealm" == 0.7.7
+
+# RxDataSources
+github "RxSwiftCommunity/RxDataSources" == 3.1.0

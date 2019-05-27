@@ -1,0 +1,15 @@
+//
+//  base.xcconfig
+//  CTWChallenge
+//
+//  Created by Marcelo Antunes on 5/21/19.
+//  Copyright © 2019 Marcelo Antunes. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+IPHONEOS_DEPLOYMENT_TARGET = 11
+PRODUCT_BUILD_NUMBER = 1
+
+INFOPLIST_FILE = CTWChallenge/SupportingFiles/Info.plist

@@ -1,0 +1,16 @@
+//
+//  prd_debug.xcconfig
+//  CTWChallenge
+//
+//  Created by Marcelo Antunes on 5/21/19.
+//  Copyright © 2019 Marcelo Antunes. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../base.xcconfig"
+
+PRODUCT_NAME = CTWChallenge
+PRODUCT_BUNDLE_IDENTIFIER = pt.ctw.app.challenge
+PRODUCT_VERSION_NUMBER = 0.0.1

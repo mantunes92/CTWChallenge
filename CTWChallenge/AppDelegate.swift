@@ -12,10 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        setupAppearance()
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.makeKeyAndVisible()
+        self.window = window
+
+        appCoordinator = AppCoordinator(window: window, delegate: self)
+        appCoordinator?.execute()
+
         return true
     }
 
@@ -44,3 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - Appearance
+private extension AppDelegate {
+    private func setupAppearance() {
+    }
+}
+
+// MARK: - CoordinatorDelegate
+extension AppDelegate: CoordinatorDelegate {
+    func didFinish(coordinator: Coordinator, arguments: [CoordinatorArgumentKey : Any]?) {
+        window = nil
+        appCoordinator = nil
+    }
+}
