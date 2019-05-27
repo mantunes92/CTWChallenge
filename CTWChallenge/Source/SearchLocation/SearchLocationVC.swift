@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Domain
 import Data
 import RxSwift
 
@@ -27,7 +28,7 @@ class SearchLocationVC: UIViewController {
         bindViewModel()
     }
 
-    let repo = RepositoryProviderImpl()
+    let repo: RepositoryProvider = RepositoryProviderImpl()
     let disposeBag = DisposeBag()
     private func bindViewModel() {
         assert(viewModel != nil, "viewModel cannot be nil")
@@ -35,14 +36,24 @@ class SearchLocationVC: UIViewController {
 
         let output = viewModel.transform(input: input)
 
-//        VALIDAR OBJECTOS API
-        repo.makeLocationRepository().getLocations(named: "t")
-            .subscribe(onSuccess: { result in
+
+        //        repo.makeSuggestionsRepository().getLocations(named: "t")
+        //            .subscribe(onSuccess: { result in
+        //                print("SUCESSO")
+        //            }) { error in
+        //                print("ERRO -> \(error.localizedDescription)" )
+        //        }
+        //        .disposed(by: disposeBag)
+
+        repo.makeLocationDetailRepository().getLocationDetail(id: "NT_Opil2LPZVRLZjlWNLJQuWB_0ITN",
+                                                              position: Position(latitude: 2,
+                                                                                 longitude: 2))
+            .subscribe(onNext: { result in
                 print("SUCESSO")
-            }) { error in
+            }, onError: { error in
                 print("ERRO -> \(error.localizedDescription)" )
-        }
-        .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
 
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LocationRepositoryImpl.swift
+//  SuggestionsRepositoryImpl.swift
 //  Data
 //
 //  Created by Marcelo Antunes on 5/23/19.
@@ -12,7 +12,7 @@ import Data_Network
 import Data_Realm
 import RxSwift
 
-final class LocationRepositoryImpl: Domain.LocationRepository {
+struct SuggestionsRepositoryImpl: Domain.SuggestionsRepository {
 
     private let networkProvider: NetworkProvider
 
@@ -20,11 +20,14 @@ final class LocationRepositoryImpl: Domain.LocationRepository {
         self.networkProvider = networkProvider
     }
 
-    func getLocations(named: String) -> Single<[Suggestion]> {
-        let request = SuggestionsRequest(query: named)
+    func getLocations(named: String, position: Position) -> Single<[Suggestion]> {
+        let positionDto = PositionDto(latitude: position.latitude,
+                                      longitude: position.longitude)
+        let request = SuggestionsRequest(query: named,
+                                         prox: (positionDto, nil))
         return networkProvider.getSuggestions(request: request)
             .map({ response -> [Suggestion] in
-                print("Resposta chegou")
+                print("\n**** MAPEAR Suggestion ****\n")
                 return []
             })
     }

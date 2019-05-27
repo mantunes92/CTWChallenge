@@ -14,8 +14,10 @@ public struct AddressDto: Codable {
     public let county: String?
     public let city: String?
     public let district: String?
-    public let postalCode: String?
     public let street: String?
+    public let houseNumber: String?
+    public let unit: String?
+    public let postalCode: String?
 
     enum CodingKeys: String, CodingKey {
         case country = "country"
@@ -23,8 +25,10 @@ public struct AddressDto: Codable {
         case county = "county"
         case city = "city"
         case district = "district"
-        case postalCode = "postalCode"
         case street = "street"
+        case houseNumber = "houseNumber"
+        case unit = "unit"
+        case postalCode = "postalCode"
     }
 
     public init(country: String?,
@@ -32,14 +36,18 @@ public struct AddressDto: Codable {
                 county: String?,
                 city: String?,
                 district: String?,
-                postalCode: String?,
-                street: String?) {
+                street: String?,
+                houseNumber: String?,
+                unit: String?,
+                postalCode: String?) {
         self.country = country
         self.state = state
         self.county = county
         self.city = city
         self.district = district
-        self.postalCode = postalCode
         self.street = street
+        self.houseNumber = houseNumber
+        self.unit = unit
+        self.postalCode = postalCode
     }
 }

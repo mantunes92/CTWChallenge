@@ -38,7 +38,7 @@ public struct SuggestionsRequest {
     /**
      A type of Spatial Filter. Sets a focus on a geographic area represented by a single geo-coordinate pair and optionally a radius (in meters) so the results within this area are more important than results outside of this area.
      */
-    let prox: QueryProperty<(position: PositionDto?, radius: Int?)>
+    let prox: QueryProperty<(position: PositionDto, radius: Int?)>
 
     /**
      Mark the beginning of the match in a token. This can be any character sequence. Common usage is a HTML tag such as <b> for bold. But it can also be a square bracket, "[".
@@ -71,7 +71,7 @@ public struct SuggestionsRequest {
                 maxResults: Int? = nil,
                 country: [String]? = nil,
                 mapview: MapViewDto? = nil,
-                prox: (PositionDto?, radius: Int?)? = nil,
+                prox: (PositionDto, radius: Int?),
                 beginHighlight: String? = nil,
                 endHighlight: String? = nil,
                 language: String? = nil,
@@ -87,7 +87,7 @@ public struct SuggestionsRequest {
         self.resulTypeValue = QueryProperty(key:"resulTypeValue", value: resulTypeValue ? "areas" : nil)
     }
 
-    var asDictionary: [String: Any] {
+    var queryDict: [String: Any] {
         var dict = AuthorizationParam.dict
         dict[query.key] = query.value
 
@@ -108,13 +108,11 @@ public struct SuggestionsRequest {
             dict[mapview.key] = mapviewString
         }
         if let proxValue = prox.value {
-            if let position = proxValue.position {
-                var proxString = "\(position.latitude),\(position.longitude)"
-                if let radius = proxValue.radius {
-                    proxString += ",\(radius)"
-                }
-                dict[prox.key] = proxString
+            var proxString = "\(proxValue.position.latitude),\(proxValue.position.longitude)"
+            if let radius = proxValue.radius {
+                proxString += ",\(radius)"
             }
+            dict[prox.key] = proxString
         }
         if let beginHighlightValue = beginHighlight.value {
             dict[beginHighlight.key] = beginHighlightValue
@@ -131,15 +129,3 @@ public struct SuggestionsRequest {
         return dict
     }
 }
-
-//public enum Areas: String, Codable {
-//    case houseNumber
-//    case intersection
-//    case street
-//    case postalCode
-//    case district
-//    case city
-//    case county
-//    case state
-//    case country
-//}

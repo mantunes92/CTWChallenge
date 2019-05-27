@@ -40,4 +40,8 @@ extension Configuration {
     static var geocoderGeocodingPath: String {
         return property(withName: "GEOCODER_PATH")
     }
+
+    static var geocoderApiVersion: String {
+        return property(withName: "GEOCODER_API_VERSION")
+    }
 }

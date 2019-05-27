@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411831BA229B376200FC176E /* MatchLevelDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831B9229B376200FC176E /* MatchLevelDto.swift */; };
+		411831BC229B389000FC176E /* MatchLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831BB229B389000FC176E /* MatchLevel.swift */; };
+		411831BE229B493000FC176E /* ErrorDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831BD229B493000FC176E /* ErrorDto.swift */; };
+		411831C0229B4C1700FC176E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831BF229B4C1700FC176E /* NetworkError.swift */; };
+		411831C2229B5C6400FC176E /* SingleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831C1229B5C6400FC176E /* SingleExtension.swift */; };
+		411831C4229B69B500FC176E /* LocationDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831C3229B69B500FC176E /* LocationDetailRequest.swift */; };
+		411831C6229B729900FC176E /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831C5229B729900FC176E /* Position.swift */; };
 		415AC4A52299545D00C34F3C /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415AC4A02299503100C34F3C /* RxMoya.framework */; };
 		415AC4A62299545D00C34F3C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415AC4A3229950A600C34F3C /* Result.framework */; };
 		415AC4A72299545D00C34F3C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415AC49F2299503000C34F3C /* Alamofire.framework */; };
@@ -40,14 +47,14 @@
 		41E38A42229743AA0056BC25 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E38A3B229743A90056BC25 /* Domain.framework */; };
 		41E38A43229743AA0056BC25 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41E38A3B229743A90056BC25 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		41E38A4E229744240056BC25 /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A4D229744240056BC25 /* RepositoryProvider.swift */; };
-		41E38A502297448D0056BC25 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A4F2297448D0056BC25 /* LocationRepository.swift */; };
+		41E38A502297448D0056BC25 /* SuggestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A4F2297448D0056BC25 /* SuggestionsRepository.swift */; };
 		41E38A51229744BF0056BC25 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E389FC2297420F0056BC25 /* RxSwift.framework */; };
 		41E38A53229744FB0056BC25 /* LocationDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A52229744FB0056BC25 /* LocationDetailRepository.swift */; };
 		41E38A572297479B0056BC25 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A562297479B0056BC25 /* Suggestion.swift */; };
 		41E38A59229747BF0056BC25 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A58229747BF0056BC25 /* Address.swift */; };
 		41E38A5C229749EE0056BC25 /* SuggestionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A5B229749EE0056BC25 /* SuggestionDto.swift */; };
 		41E38A5E22974A170056BC25 /* AddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A5D22974A170056BC25 /* AddressDto.swift */; };
-		41E38A6122974BB80056BC25 /* LocationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A6022974BB80056BC25 /* LocationRepositoryImpl.swift */; };
+		41E38A6122974BB80056BC25 /* SuggestionsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A6022974BB80056BC25 /* SuggestionsRepositoryImpl.swift */; };
 		41E38A6322974BC50056BC25 /* LocationDetailRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E38A6222974BC50056BC25 /* LocationDetailRepositoryImpl.swift */; };
 		41E38A6422974C210056BC25 /* Data_Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E38A19229742DD0056BC25 /* Data_Network.framework */; };
 		41E38A6522974C210056BC25 /* Data_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E38A2A229742E90056BC25 /* Data_Realm.framework */; };
@@ -110,6 +117,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		411831B9229B376200FC176E /* MatchLevelDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchLevelDto.swift; sourceTree = "<group>"; };
+		411831BB229B389000FC176E /* MatchLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchLevel.swift; sourceTree = "<group>"; };
+		411831BD229B493000FC176E /* ErrorDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDto.swift; sourceTree = "<group>"; };
+		411831BF229B4C1700FC176E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		411831C1229B5C6400FC176E /* SingleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleExtension.swift; sourceTree = "<group>"; };
+		411831C3229B69B500FC176E /* LocationDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailRequest.swift; sourceTree = "<group>"; };
+		411831C5229B729900FC176E /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		415AC49F2299503000C34F3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		415AC4A02299503100C34F3C /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
 		415AC4A3229950A600C34F3C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -160,13 +174,13 @@
 		41E38A3D229743AA0056BC25 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		41E38A3E229743AA0056BC25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E38A4D229744240056BC25 /* RepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProvider.swift; sourceTree = "<group>"; };
-		41E38A4F2297448D0056BC25 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		41E38A4F2297448D0056BC25 /* SuggestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsRepository.swift; sourceTree = "<group>"; };
 		41E38A52229744FB0056BC25 /* LocationDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailRepository.swift; sourceTree = "<group>"; };
 		41E38A562297479B0056BC25 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		41E38A58229747BF0056BC25 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		41E38A5B229749EE0056BC25 /* SuggestionDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDto.swift; sourceTree = "<group>"; };
 		41E38A5D22974A170056BC25 /* AddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDto.swift; sourceTree = "<group>"; };
-		41E38A6022974BB80056BC25 /* LocationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImpl.swift; sourceTree = "<group>"; };
+		41E38A6022974BB80056BC25 /* SuggestionsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsRepositoryImpl.swift; sourceTree = "<group>"; };
 		41E38A6222974BC50056BC25 /* LocationDetailRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailRepositoryImpl.swift; sourceTree = "<group>"; };
 		41E38A6822974D240056BC25 /* RepositoryProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProviderImpl.swift; sourceTree = "<group>"; };
 		41E38A6A229755260056BC25 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
@@ -258,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				415AC4B0229961E400C34F3C /* AuthorizationParam.swift */,
+				411831BF229B4C1700FC176E /* NetworkError.swift */,
 				415AC4B22299620E00C34F3C /* QueryProperty.swift */,
 				41E38A7D229762F70056BC25 /* Extensions */,
 			);
@@ -482,6 +497,8 @@
 			children = (
 				41E38A562297479B0056BC25 /* Suggestion.swift */,
 				41E38A58229747BF0056BC25 /* Address.swift */,
+				411831BB229B389000FC176E /* MatchLevel.swift */,
+				411831C5229B729900FC176E /* Position.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -490,7 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				41E38A4D229744240056BC25 /* RepositoryProvider.swift */,
-				41E38A4F2297448D0056BC25 /* LocationRepository.swift */,
+				41E38A4F2297448D0056BC25 /* SuggestionsRepository.swift */,
 				41E38A52229744FB0056BC25 /* LocationDetailRepository.swift */,
 			);
 			path = Repositories;
@@ -503,6 +520,7 @@
 				41E38A8022976BBA0056BC25 /* Responses */,
 				41E38A5B229749EE0056BC25 /* SuggestionDto.swift */,
 				41E38A5D22974A170056BC25 /* AddressDto.swift */,
+				411831B9229B376200FC176E /* MatchLevelDto.swift */,
 				41E38A8522976DB00056BC25 /* ResponseDto.swift */,
 				41E38A872297764D0056BC25 /* MetaInfoDto.swift */,
 				41E38A89229776600056BC25 /* ViewDto.swift */,
@@ -512,6 +530,7 @@
 				41E38A91229776F50056BC25 /* AdditionalDataDto.swift */,
 				41E38A93229777090056BC25 /* PositionDto.swift */,
 				41E38A952297771F0056BC25 /* MapViewDto.swift */,
+				411831BD229B493000FC176E /* ErrorDto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -519,7 +538,7 @@
 		41E38A5F22974B910056BC25 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				41E38A6022974BB80056BC25 /* LocationRepositoryImpl.swift */,
+				41E38A6022974BB80056BC25 /* SuggestionsRepositoryImpl.swift */,
 				41E38A6222974BC50056BC25 /* LocationDetailRepositoryImpl.swift */,
 			);
 			path = Repositories;
@@ -547,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				41E38A7B229762620056BC25 /* SuggestionsRequest.swift */,
+				411831C3229B69B500FC176E /* LocationDetailRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -555,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				41E38A7E2297630A0056BC25 /* EncodableExtension.swift */,
+				411831C1229B5C6400FC176E /* SingleExtension.swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -871,7 +892,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41E38A6122974BB80056BC25 /* LocationRepositoryImpl.swift in Sources */,
+				41E38A6122974BB80056BC25 /* SuggestionsRepositoryImpl.swift in Sources */,
 				41E38A6322974BC50056BC25 /* LocationDetailRepositoryImpl.swift in Sources */,
 				41E38A6922974D240056BC25 /* RepositoryProviderImpl.swift in Sources */,
 			);
@@ -883,8 +904,12 @@
 			files = (
 				41E38A8C229776780056BC25 /* ResultDto.swift in Sources */,
 				41E38A742297583A0056BC25 /* GeocoderAPI.swift in Sources */,
+				411831BE229B493000FC176E /* ErrorDto.swift in Sources */,
+				411831C2229B5C6400FC176E /* SingleExtension.swift in Sources */,
+				411831BA229B376200FC176E /* MatchLevelDto.swift in Sources */,
 				415AC4B1229961E400C34F3C /* AuthorizationParam.swift in Sources */,
 				41E38A92229776F50056BC25 /* AdditionalDataDto.swift in Sources */,
+				411831C0229B4C1700FC176E /* NetworkError.swift in Sources */,
 				41E38A7C229762620056BC25 /* SuggestionsRequest.swift in Sources */,
 				41E38A94229777090056BC25 /* PositionDto.swift in Sources */,
 				41E38A882297764D0056BC25 /* MetaInfoDto.swift in Sources */,
@@ -894,6 +919,7 @@
 				41E38A7F2297630A0056BC25 /* EncodableExtension.swift in Sources */,
 				415AC4AD229958CC00C34F3C /* Configuration.swift in Sources */,
 				41E38A7922975B190056BC25 /* GeocoderAutocompleteAPIRequestableImpl.swift in Sources */,
+				411831C4229B69B500FC176E /* LocationDetailRequest.swift in Sources */,
 				41E38A7722975A910056BC25 /* GeocoderAPIRequestableImpl.swift in Sources */,
 				41E38A5C229749EE0056BC25 /* SuggestionDto.swift in Sources */,
 				41E38A90229776A80056BC25 /* AddressDetailDto.swift in Sources */,
@@ -919,10 +945,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411831C6229B729900FC176E /* Position.swift in Sources */,
 				41E38A59229747BF0056BC25 /* Address.swift in Sources */,
-				41E38A502297448D0056BC25 /* LocationRepository.swift in Sources */,
+				41E38A502297448D0056BC25 /* SuggestionsRepository.swift in Sources */,
 				41E38A4E229744240056BC25 /* RepositoryProvider.swift in Sources */,
 				41E38A53229744FB0056BC25 /* LocationDetailRepository.swift in Sources */,
+				411831BC229B389000FC176E /* MatchLevel.swift in Sources */,
 				41E38A572297479B0056BC25 /* Suggestion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

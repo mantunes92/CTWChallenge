@@ -26,12 +26,12 @@ public struct RepositoryProviderImpl {
 }
 
 extension RepositoryProviderImpl: Domain.RepositoryProvider {
-    public func makeLocationRepository() -> LocationRepository {
-        return LocationRepositoryImpl(networkProvider: networkProvider)
+    public func makeSuggestionsRepository() -> SuggestionsRepository {
+        return SuggestionsRepositoryImpl(networkProvider: networkProvider)
     }
     
     public func makeLocationDetailRepository() -> LocationDetailRepository {
-        return LocationDetailRepositoryImpl()
+        return LocationDetailRepositoryImpl(networkProvider: networkProvider)
     }
     
 }

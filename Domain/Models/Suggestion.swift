@@ -14,8 +14,8 @@ public struct Suggestion: Hashable {
     public let countryCode: String
     public let locationId: String
     public let address: Address
-    public let distance: Int
-    public let matchLevel: String
+    public let distance: Int?
+    public let matchLevel: MatchLevel
 
     public init(label: String,
                 language: String,
@@ -23,7 +23,7 @@ public struct Suggestion: Hashable {
                 locationId: String,
                 address: Address,
                 distance: Int,
-                matchLevel: String) {
+                matchLevel: MatchLevel) {
         self.label = label
         self.language = language
         self.countryCode = countryCode

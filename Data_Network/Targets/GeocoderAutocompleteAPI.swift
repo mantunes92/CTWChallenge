@@ -45,7 +45,7 @@ extension GeocoderAutocompleteAPI: TargetType {
     var task: Task {
         switch self {
         case .getSuggestions(let request):
-            return .requestParameters(parameters: request.asDictionary,
+            return .requestParameters(parameters: request.queryDict,
                                       encoding: URLEncoding.queryString)
         }
     }

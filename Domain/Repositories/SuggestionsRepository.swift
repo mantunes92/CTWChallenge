@@ -1,5 +1,5 @@
 //
-//  LocationRepository.swift
+//  SuggestionsRepository.swift
 //  Domain
 //
 //  Created by Marcelo Antunes on 5/23/19.
@@ -9,6 +9,6 @@
 import Foundation
 import RxSwift
 
-public protocol LocationRepository {
-    func getLocations(named: String) -> Single<[Suggestion]>
+public protocol SuggestionsRepository {
+    func getLocations(named: String, position: Position) -> Single<[Suggestion]>
 }

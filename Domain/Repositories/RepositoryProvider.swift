@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol RepositoryProvider {
-    func makeLocationRepository() -> LocationRepository
+    func makeSuggestionsRepository() -> SuggestionsRepository
     func makeLocationDetailRepository() -> LocationDetailRepository
 }

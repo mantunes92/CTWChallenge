@@ -11,11 +11,11 @@ import Moya
 import RxSwift
 
 public protocol GeocoderAPIRequestable {
-    func getLocationDetail(id: String) -> Single<String>
+    func getLocationDetail(request: LocationDetailRequest) -> Single<LocationDetailResponse>
 }
 
 enum GeocoderAPI {
-    case getLocationDetail(id: String)
+    case getLocationDetail(request: LocationDetailRequest)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -26,14 +26,14 @@ extension GeocoderAPI: TargetType {
 
     var path: String {
         switch self {
-        case .getLocationDetail(let id):
+        case .getLocationDetail:
             return Configuration.geocoderGeocodingPath
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getLocationDetail(let id):
+        case .getLocationDetail:
             return .get
         }
     }
@@ -44,8 +44,8 @@ extension GeocoderAPI: TargetType {
 
     var task: Task {
         switch self {
-        case .getLocationDetail(let id):
-            return .requestParameters(parameters: [:],
+        case .getLocationDetail(let request):
+            return .requestParameters(parameters: request.queryDict,
                                       encoding: URLEncoding.queryString)
         }
     }

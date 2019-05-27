@@ -9,13 +9,13 @@
 import Foundation
 
 public struct SuggestionDto: Codable {
-    public let label: String?
-    public let language: String?
-    public let countryCode: String?
-    public let locationId: String?
-    public let address: AddressDto?
+    public let label: String
+    public let language: String
+    public let countryCode: String
+    public let locationId: String
+    public let address: AddressDto
     public let distance: Int?
-    public let matchLevel: String?
+    public let matchLevel: MatchLevelDto
 
     enum CodingKeys: String, CodingKey {
         case label = "label"
@@ -33,7 +33,7 @@ public struct SuggestionDto: Codable {
                 locationId: String,
                 address: AddressDto,
                 distance: Int,
-                matchLevel: String) {
+                matchLevel: MatchLevelDto) {
         self.label = label
         self.language = language
         self.countryCode = countryCode

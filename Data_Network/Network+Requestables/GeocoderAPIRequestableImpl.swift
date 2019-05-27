@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import Moya
+import RxMoya
 import RxSwift
 
 extension Network: GeocoderAPIRequestable {
-    public func getLocationDetail(id: String) -> Single<String> {
-        return Single.just("")
+    public func getLocationDetail(request: LocationDetailRequest) -> Single<LocationDetailResponse> {
+        return provider.rx.request(MultiTarget(GeocoderAPI.getLocationDetail(request: request)), callbackQueue: DispatchQueue.global(qos: .background))
+            .filterSuccessfulStatusCodes()
+            .map(LocationDetailResponse.self)
+            .handleErrorIfNeeded()
     }
 }

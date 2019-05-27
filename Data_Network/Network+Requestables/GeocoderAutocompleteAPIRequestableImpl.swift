@@ -14,6 +14,8 @@ import RxSwift
 extension Network: GeocoderAutocompleteAPIRequestable {
     public func getSuggestions(request: SuggestionsRequest) -> Single<SuggestionsResponse> {
         return provider.rx.request(MultiTarget(GeocoderAutocompleteAPI.getSuggestions(request: request)), callbackQueue: DispatchQueue.global(qos: .background))
+            .filterSuccessfulStatusCodes()
             .map(SuggestionsResponse.self)
+            .handleErrorIfNeeded()
     }
 }

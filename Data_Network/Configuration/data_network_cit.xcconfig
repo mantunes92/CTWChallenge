@@ -16,5 +16,6 @@ GEOCODER_AUTOCOMPLETE_BASE_URL = http:/$()/autocomplete.geocoder.cit.api.here.co
 GEOCODER_AUTOCOMPLETE_SUGGESTIONS_PATH = /6.2/suggest.json
 
 // GEOCODER_API
+GEOCODER_API_VERSION = 9
 GEOCODER_BASE_URL = https:/$()/geocoder.cit.api.here.com
 GEOCODER_PATH = /6.2/geocode.json

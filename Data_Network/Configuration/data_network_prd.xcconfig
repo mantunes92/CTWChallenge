@@ -9,12 +9,14 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "base.xcconfig"
+#include "data_network_base.xcconfig"
 
 // GEOCODER_AUTOCOMPLETE_API
 GEOCODER_AUTOCOMPLETE_BASE_URL = http:/$()/autocomplete.geocoder.api.here.com
 GEOCODER_AUTOCOMPLETE_SUGGESTIONS_PATH = /6.2/suggest.json
 
 // GEOCODER_API
+GEOCODER_API_VERSION = 9
 GEOCODER_BASE_URL = https:/$()/geocoder.api.here.com
 GEOCODER_PATH = /6.2/geocode.json
+

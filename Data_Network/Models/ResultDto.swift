@@ -10,19 +10,26 @@ import Foundation
 
 public struct ResultDto: Codable {
     public let relevance: Int
+    public let distance: Double?
     public let matchLevel: String
     public let matchType: String
     public let location: LocationDto
 
     enum CodingKeys: String, CodingKey {
         case relevance = "Relevance"
+        case distance = "Distance"
         case matchLevel = "MatchLevel"
         case matchType = "MatchType"
         case location = "Location"
     }
 
-    public init(relevance: Int, matchLevel: String, matchType: String, location: LocationDto) {
+    public init(relevance: Int,
+                distance: Double?,
+                matchLevel: String,
+                matchType: String,
+                location: LocationDto) {
         self.relevance = relevance
+        self.distance = distance
         self.matchLevel = matchLevel
         self.matchType = matchType
         self.location = location
