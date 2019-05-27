@@ -61,6 +61,9 @@ class SearchLocationVC: UIViewController {
         let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: configureCell)
 
         tableItems
+            .do(onNext: { [weak self] suggestions in
+                self?.hideTableView(suggestions.isEmpty)
+            })
             .map { [Section(model: "Suggestions", items: $0)] }
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -76,9 +79,13 @@ class SearchLocationVC: UIViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.name,
                                                  for: indexPath) as! SearchTableViewCell
-        cell.titleLabel.text = item.label
+        cell.titleLabel.text = "\(item.distance)"
 
         return cell
+    }
+
+    private func hideTableView(_ hide: Bool) {
+        tableView.isHidden = hide
     }
 
     private func showError(_ error: Error) {

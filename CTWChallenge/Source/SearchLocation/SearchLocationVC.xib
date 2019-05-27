@@ -26,6 +26,24 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LB6-1H-p6x">
+                    <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions not found" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzG-Gc-aOP">
+                            <rect key="frame" x="120.5" y="371" width="173" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="rzG-Gc-aOP" firstAttribute="centerY" secondItem="LB6-1H-p6x" secondAttribute="centerY" id="AM5-bF-YuB"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rzG-Gc-aOP" secondAttribute="trailing" constant="24" id="JFx-Gj-cXJ"/>
+                        <constraint firstItem="rzG-Gc-aOP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LB6-1H-p6x" secondAttribute="leading" constant="24" id="hmK-ri-glf"/>
+                        <constraint firstItem="rzG-Gc-aOP" firstAttribute="centerX" secondItem="LB6-1H-p6x" secondAttribute="centerX" id="loB-Si-9e5"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26S-bD-ERC">
                     <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,10 +51,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="LB6-1H-p6x" firstAttribute="top" secondItem="26S-bD-ERC" secondAttribute="top" id="3Np-np-kie"/>
                 <constraint firstItem="dHC-Kq-xpD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6fS-ed-mkz"/>
+                <constraint firstItem="LB6-1H-p6x" firstAttribute="bottom" secondItem="26S-bD-ERC" secondAttribute="bottom" id="DMP-z6-6OM"/>
                 <constraint firstItem="26S-bD-ERC" firstAttribute="top" secondItem="dHC-Kq-xpD" secondAttribute="bottom" id="PO4-Ju-OJD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="26S-bD-ERC" secondAttribute="trailing" id="Xi9-Xf-UCJ"/>
                 <constraint firstItem="26S-bD-ERC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cGU-0h-Gc1"/>
+                <constraint firstItem="LB6-1H-p6x" firstAttribute="leading" secondItem="26S-bD-ERC" secondAttribute="leading" id="emn-bS-dqe"/>
+                <constraint firstItem="LB6-1H-p6x" firstAttribute="trailing" secondItem="26S-bD-ERC" secondAttribute="trailing" id="g8L-dk-LPo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="26S-bD-ERC" secondAttribute="bottom" id="gTJ-fV-2pu"/>
                 <constraint firstItem="dHC-Kq-xpD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sbC-Dh-F7k"/>
                 <constraint firstItem="dHC-Kq-xpD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zjl-rT-e9i"/>

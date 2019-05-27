@@ -29,6 +29,11 @@ struct SuggestionsRepositoryImpl: Domain.SuggestionsRepository {
         return networkProvider.getSuggestions(request: request)
             .map { $0.suggestions }
             .map(mapSuggestions)
+            .map(orderByDistance)
+    }
+
+    private func orderByDistance(_ suggestions: [Suggestion]) -> [Suggestion] {
+        return suggestions.sorted(by: { $0.distance > $1.distance })
     }
 
     private func mapSuggestions(_ dtos: [SuggestionDto]) -> [Suggestion] {
