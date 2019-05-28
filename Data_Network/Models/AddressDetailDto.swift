@@ -10,15 +10,15 @@ import Foundation
 
 public struct AddressDetailDto: Codable {
     public let label: String
-    public let country: String
-    public let state: String
-    public let county: String
-    public let city: String
-    public let district: String
-    public let street: String
-    public let houseNumber: String
-    public let postalCode: String
-    public let additionalData: [AdditionalDataDto]
+    public let country: String?
+    public let state: String?
+    public let county: String?
+    public let city: String?
+    public let district: String?
+    public let street: String?
+    public let houseNumber: String?
+    public let postalCode: String?
+    public let additionalData: [AdditionalDataDto]?
 
     enum CodingKeys: String, CodingKey {
         case label = "Label"
@@ -34,15 +34,15 @@ public struct AddressDetailDto: Codable {
     }
 
     public init(label: String,
-                country: String,
-                state: String,
-                county: String,
-                city: String,
-                district: String,
-                street: String,
-                houseNumber: String,
-                postalCode: String,
-                additionalData: [AdditionalDataDto]) {
+                country: String?,
+                state: String?,
+                county: String?,
+                city: String?,
+                district: String?,
+                street: String?,
+                houseNumber: String?,
+                postalCode: String?,
+                additionalData: [AdditionalDataDto]?) {
         self.label = label
         self.country = country
         self.state = state

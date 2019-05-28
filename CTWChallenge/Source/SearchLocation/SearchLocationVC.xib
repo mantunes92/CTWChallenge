@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchLocationVC" customModule="CTWChallenge" customModuleProvider="target">
             <connections>
+                <outlet property="emptyListLabel" destination="rzG-Gc-aOP" id="5Oq-8U-5HY"/>
+                <outlet property="keyboardConstraint" destination="gTJ-fV-2pu" id="noY-b5-hYF"/>
                 <outlet property="searchBar" destination="dHC-Kq-xpD" id="xi0-9d-GP2"/>
                 <outlet property="tableView" destination="26S-bD-ERC" id="jcn-Ze-NF7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="T4c-Xx-G2o"/>
@@ -29,7 +31,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LB6-1H-p6x">
                     <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions not found" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzG-Gc-aOP">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions not found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzG-Gc-aOP">
                             <rect key="frame" x="120.5" y="371" width="173" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>

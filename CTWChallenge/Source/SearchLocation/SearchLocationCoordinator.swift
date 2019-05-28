@@ -34,7 +34,21 @@ class SearchLocationCoordinator: Coordinator {
 
 }
 
+// MARK: - CoordinatorDelegate
+extension SearchLocationCoordinator: CoordinatorDelegate {
+    func didFinish(coordinator: Coordinator, arguments: [CoordinatorArgumentKey : Any]?) {
+        removeChildCoordinator(coordinator)
+    }
+}
+
 // MARK: - SearchLocationNavigationDelegate
 extension SearchLocationCoordinator: SearchLocationNavigationDelegate {
-
+    func didSelectLocation(_ locationId: String) {
+        guard let navController = navigationController else { fatalError("NavigationController not set") }
+        let detailCoord = LocationDetailCoordinator(locationId: locationId,
+                                                    navigationController: navController,
+                                                    delegate: self)
+        addChildCoordinator(detailCoord)
+        detailCoord.execute()
+    }
 }

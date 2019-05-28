@@ -18,25 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unm-DU-klr">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bcM-hm-WqG">
                         <rect key="frame" x="8" y="8" width="304" height="47.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="999" constant="47.5" id="d5X-fh-zUt"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unm-DU-klr">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pna-pb-4aT">
+                                <rect key="frame" x="0.0" y="26" width="304" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="unm-DU-klr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1IV-0E-0MT"/>
-                    <constraint firstAttribute="trailing" secondItem="unm-DU-klr" secondAttribute="trailing" constant="8" id="VpR-YJ-OAz"/>
-                    <constraint firstItem="unm-DU-klr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="WGL-SD-1tc"/>
-                    <constraint firstAttribute="bottom" secondItem="unm-DU-klr" secondAttribute="bottom" constant="8" id="nqG-AQ-47m"/>
+                    <constraint firstItem="bcM-hm-WqG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="BEw-88-PtS"/>
+                    <constraint firstAttribute="bottom" secondItem="bcM-hm-WqG" secondAttribute="bottom" constant="8" id="Bj1-mB-Cau"/>
+                    <constraint firstAttribute="trailing" secondItem="bcM-hm-WqG" secondAttribute="trailing" constant="8" id="OXS-sK-VRA"/>
+                    <constraint firstItem="bcM-hm-WqG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="wkk-62-awt"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="subtitleLabel" destination="pna-pb-4aT" id="ejr-fb-kwr"/>
                 <outlet property="titleLabel" destination="unm-DU-klr" id="36Z-QS-AYP"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="110.82589285714285"/>

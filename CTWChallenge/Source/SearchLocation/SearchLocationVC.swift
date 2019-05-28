@@ -15,13 +15,15 @@ import RxDataSources
 
 protocol SearchLocationNavigationDelegate: class {
     // Definition of navigation methods
+    func didSelectLocation(_ locationId: String)
 }
 
-class SearchLocationVC: UIViewController {
+class SearchLocationVC: BaseViewController {
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
-
+    @IBOutlet var emptyListLabel: UILabel!
+    
     //This viewModel is injected by SearchLocationCoordinator
     var viewModel: SearchLocationVM!
     weak var navigationDelegate: SearchLocationNavigationDelegate?
@@ -33,7 +35,80 @@ class SearchLocationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initialSetup()
         bindViewModel()
+    }
+
+    private func initialSetup() {
+        navigationItem.title = viewModel.navBarTitle
+        emptyListLabel.text = viewModel.emptyListInfo
+        setupSearchBar()
+
+        setupNavBarButtons()
+        setupTableView()
+
+        LocationManager.shared.requestAuthorization()
+    }
+
+    private func setupSearchBar() {
+        searchBar.placeholder = viewModel.placeholder
+        searchBar.showsCancelButton = true
+        searchBar.rx.cancelButtonClicked
+            .subscribe(onNext: { [weak self] in
+                self?.searchBar.endEditing(true)
+            })
+        .disposed(by: disposeBag)
+    }
+
+    private func setupTableView() {
+        tableView.keyboardDismissMode = .interactive
+        tableView.register(UINib(nibName: SearchTableViewCell.name, bundle: Bundle.main),
+                           forCellReuseIdentifier: SearchTableViewCell.name)
+
+        tableView.rx.modelSelected(Suggestion.self)
+            .subscribe(onNext: { [weak self] suggestion in
+                self?.navigationDelegate?.didSelectLocation(suggestion.locationId)
+            })
+        .disposed(by: disposeBag)
+    }
+
+    private func setupNavBarButtons() {
+        setupSortingFilterBtn()
+        setupFavoritesBtn()
+    }
+
+    private func setupFavoritesBtn() {
+        let barBtn = UIBarButtonItem(title: viewModel.favoritesBtnTitle,
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(favoritesTouched))
+        navigationItem.setRightBarButton(barBtn, animated: true)
+    }
+    @objc private func favoritesTouched() {
+
+    }
+
+    private func setupSortingFilterBtn() {
+        let barBtn = UIBarButtonItem(title: viewModel.sortBtnTitle,
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(sortingTouched))
+
+        navigationItem.setLeftBarButton(barBtn, animated: true)
+    }
+    @objc private func sortingTouched() {
+        let popoverController = SortPopoverController()
+        popoverController.initialSelection = viewModel.getCurrentSort()
+        popoverController.delegate = self
+        popoverController.modalPresentationStyle = .popover
+        popoverController.preferredContentSize = CGSize(width: 150, height: 150)
+
+        if let popoverPresentationController = popoverController.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .up
+            popoverPresentationController.barButtonItem = navigationItem.leftBarButtonItem
+            popoverPresentationController.delegate = self
+            present(popoverController, animated: true, completion: nil)
+        }
     }
 
     private func bindViewModel() {
@@ -46,18 +121,15 @@ class SearchLocationVC: UIViewController {
         bindToTableView(output.tableItems)
 
         output.error
-            .drive(onNext: showError)
+            .drive(onNext: presentError)
             .disposed(by: disposeBag)
 
         output.isLoading
-            .drive(onNext: handleLoading)
+            .drive(onNext: showLoading)
             .disposed(by: disposeBag)
     }
 
     private func bindToTableView(_ tableItems: Driver<[Suggestion]>) {
-        tableView.register(UINib(nibName: SearchTableViewCell.name, bundle: Bundle.main),
-                           forCellReuseIdentifier: SearchTableViewCell.name)
-
         let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: configureCell)
 
         tableItems
@@ -79,27 +151,27 @@ class SearchLocationVC: UIViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.name,
                                                  for: indexPath) as! SearchTableViewCell
-        cell.titleLabel.text = "\(item.distance)"
-
+        cell.titleLabel.text = item.label
+        cell.subtitleLabel.text = "suggestions.distance".localizedWithFormat(arguments: item.distance)
         return cell
     }
 
     private func hideTableView(_ hide: Bool) {
         tableView.isHidden = hide
     }
+}
 
-    private func showError(_ error: Error) {
-        let alertVC = UIAlertController(title: "Error",
-                                        message: error.localizedDescription,
-                                        preferredStyle: .alert)
-
-        let okAction = UIAlertAction(title: "Ok", style: .default)
-
-        alertVC.addAction(okAction)
-        present(alertVC, animated: true, completion: nil)
+// MARK: - UIPopoverPresentationControllerDelegate, SortPopoverControllerDelegate
+extension SearchLocationVC: UIPopoverPresentationControllerDelegate, SortPopoverControllerDelegate {
+    func didSelectSort(controller: SortPopoverController, didSelectItem sort: SortType) {
+        viewModel.changeSort(sort)
     }
 
-    private func handleLoading(_ bool: Bool) {
-        bool ? view.showLoading() : view.hideLoading()
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    public func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

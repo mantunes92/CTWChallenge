@@ -12,7 +12,7 @@ public struct ResultDto: Codable {
     public let relevance: Int
     public let distance: Double?
     public let matchLevel: String
-    public let matchType: String
+    public let matchType: String?
     public let location: LocationDto
 
     enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ public struct ResultDto: Codable {
     public init(relevance: Int,
                 distance: Double?,
                 matchLevel: String,
-                matchType: String,
+                matchType: String?,
                 location: LocationDto) {
         self.relevance = relevance
         self.distance = distance

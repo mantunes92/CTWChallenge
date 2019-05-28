@@ -32,7 +32,7 @@ public struct SuggestionDto: Codable {
                 countryCode: String,
                 locationId: String,
                 address: AddressDto,
-                distance: Int,
+                distance: Int?,
                 matchLevel: MatchLevelDto) {
         self.label = label
         self.language = language

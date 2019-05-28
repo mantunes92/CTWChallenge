@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 public protocol LocationDetailRepository {
-    func getLocationDetail(id: String, position: Position) -> Observable<String>
+    func getLocationDetail(id: String, position: Position) -> Single<AddressDetail>
     func saveLocation(location: String) -> Completable
     func deleteLocation(location: String) -> Completable
 }
