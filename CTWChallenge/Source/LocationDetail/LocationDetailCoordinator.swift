@@ -27,7 +27,7 @@ class LocationDetailCoordinator: Coordinator {
     }
 
     func execute() {
-        let viewModel = LocationDetailVM(repo: repoProvider.makeLocationDetailRepository(),
+        let viewModel = LocationDetailVM(repo: repoProvider.makeLocationRepository(),
                                          locationId: locationId)
         let locationDetailVC = LocationDetailVC.makeFromXib()
         locationDetailVC.navigationDelegate = self

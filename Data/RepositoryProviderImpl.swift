@@ -15,13 +15,16 @@ import RxSwift
 public struct RepositoryProviderImpl {
 
     let networkProvider: NetworkProvider
+    let dataBaseProvider: DataBaseProvider
 
-    public init(networkProvider: NetworkProvider) {
+    public init(networkProvider: NetworkProvider, dataBaseProvider: DataBaseProvider) {
         self.networkProvider = networkProvider
+        self.dataBaseProvider = dataBaseProvider
     }
 
     public init() {
         self.networkProvider = Network()
+        self.dataBaseProvider = DataBase()
     }
 }
 
@@ -30,8 +33,9 @@ extension RepositoryProviderImpl: Domain.RepositoryProvider {
         return SuggestionsRepositoryImpl(networkProvider: networkProvider)
     }
     
-    public func makeLocationDetailRepository() -> LocationDetailRepository {
-        return LocationDetailRepositoryImpl(networkProvider: networkProvider)
+    public func makeLocationRepository() -> LocationRepository {
+        return LocationRepositoryImpl(networkProvider: networkProvider,
+                                      dataBaseProvider: dataBaseProvider)
     }
     
 }

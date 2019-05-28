@@ -26,3 +26,5 @@
 "location.detail.coordinates.placeholder" = "Coordinates:";
 "location.detail.distance.placeholder" = "Distance:";
 "location.detail.distance.value" = "%1$f meters";
+"location.detail.save.favorite.btn.title" = "Save to favorites";
+"location.detail.remove.favorite.btn.title" = "Remove from favorites";
