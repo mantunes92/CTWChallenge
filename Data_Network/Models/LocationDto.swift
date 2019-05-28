@@ -12,7 +12,7 @@ public struct LocationDto: Codable {
     public let locationId: String
     public let locationType: String
     public let displayPosition: PositionDto
-    public let navigationPosition: [PositionDto]
+    public let navigationPosition: [PositionDto]?
     public let mapView: MapViewDto
     public let address: AddressDetailDto
 
@@ -25,7 +25,7 @@ public struct LocationDto: Codable {
         case address = "Address"
     }
 
-    public init(locationId: String, locationType: String, displayPosition: PositionDto, navigationPosition: [PositionDto], mapView: MapViewDto, address: AddressDetailDto) {
+    public init(locationId: String, locationType: String, displayPosition: PositionDto, navigationPosition: [PositionDto]?, mapView: MapViewDto, address: AddressDetailDto) {
         self.locationId = locationId
         self.locationType = locationType
         self.displayPosition = displayPosition
