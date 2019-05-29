@@ -13,7 +13,7 @@ import Data_Realm
 import RxSwift
 
 struct LocationRepositoryImpl: Domain.LocationRepository {
-    
+
     private let networkProvider: NetworkProvider
     private let dataBaseProvider: DataBaseProvider
     
@@ -60,6 +60,11 @@ struct LocationRepositoryImpl: Domain.LocationRepository {
                 return self.dataBaseProvider.delete(entity: locationDB!.first!)
             })
     }
+
+    func getFavorites() -> Observable<[Location]> {
+        return dataBaseProvider.queryAll(LocationDB.self)
+            .map(mapLocations)
+    }
 }
 
 // MAPPING
@@ -87,5 +92,21 @@ extension LocationRepositoryImpl {
                           latitude: domain.coordinates.latitude,
                           longitude: domain.coordinates.longitude,
                           distance: domain.distance)
+    }
+
+    func mapLocations(_ dbs: [LocationDB]) -> [Location] {
+        return dbs.map(mapLocation)
+    }
+
+    func mapLocation(_ db: LocationDB) -> Location {
+        let coordinates = Position(latitude: db.latitude,
+                                   longitude: db.longitude)
+        return Location(locationId: db.locationId,
+                        label: db.label,
+                        street: db.street,
+                        postalCode: db.postalCode,
+                        coordinates: coordinates,
+                        distance: db.distance,
+                        isFavorite: true)
     }
 }

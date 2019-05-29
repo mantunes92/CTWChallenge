@@ -23,7 +23,13 @@
 		411831C2229B5C6400FC176E /* SingleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831C1229B5C6400FC176E /* SingleExtension.swift */; };
 		411831C4229B69B500FC176E /* LocationDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831C3229B69B500FC176E /* LocationDetailRequest.swift */; };
 		411831C6229B729900FC176E /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411831C5229B729900FC176E /* Position.swift */; };
+		4118EFBB229E03E3007E60DD /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4118EFB9229E03E3007E60DD /* FavoriteTableViewCell.swift */; };
+		4118EFBC229E03E3007E60DD /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4118EFBA229E03E3007E60DD /* FavoriteTableViewCell.xib */; };
 		414A034F229DC0B000F35625 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414A034E229DC0B000F35625 /* Location.swift */; };
+		4153371A229DF6C1006D263A /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41533718229DF6C1006D263A /* FavoritesVC.swift */; };
+		4153371B229DF6C1006D263A /* FavoritesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41533719229DF6C1006D263A /* FavoritesVC.xib */; };
+		4153371D229DF6D0006D263A /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4153371C229DF6D0006D263A /* FavoritesVM.swift */; };
+		4153371F229DF6E1006D263A /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4153371E229DF6E1006D263A /* FavoritesCoordinator.swift */; };
 		415AC4A52299545D00C34F3C /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415AC4A02299503100C34F3C /* RxMoya.framework */; };
 		415AC4A62299545D00C34F3C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415AC4A3229950A600C34F3C /* Result.framework */; };
 		415AC4A72299545D00C34F3C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415AC49F2299503000C34F3C /* Alamofire.framework */; };
@@ -190,7 +196,13 @@
 		411831C1229B5C6400FC176E /* SingleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleExtension.swift; sourceTree = "<group>"; };
 		411831C3229B69B500FC176E /* LocationDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailRequest.swift; sourceTree = "<group>"; };
 		411831C5229B729900FC176E /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		4118EFB9229E03E3007E60DD /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		4118EFBA229E03E3007E60DD /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		414A034E229DC0B000F35625 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		41533718229DF6C1006D263A /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		41533719229DF6C1006D263A /* FavoritesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesVC.xib; sourceTree = "<group>"; };
+		4153371C229DF6D0006D263A /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
+		4153371E229DF6E1006D263A /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		415AC49F2299503000C34F3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		415AC4A02299503100C34F3C /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
 		415AC4A3229950A600C34F3C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -371,6 +383,27 @@
 			path = LoadingView;
 			sourceTree = "<group>";
 		};
+		4118EFB8229E033A007E60DD /* FavoriteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4118EFB9229E03E3007E60DD /* FavoriteTableViewCell.swift */,
+				4118EFBA229E03E3007E60DD /* FavoriteTableViewCell.xib */,
+			);
+			path = FavoriteTableViewCell;
+			sourceTree = "<group>";
+		};
+		41533717229DF690006D263A /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4118EFB8229E033A007E60DD /* FavoriteTableViewCell */,
+				4153371E229DF6E1006D263A /* FavoritesCoordinator.swift */,
+				4153371C229DF6D0006D263A /* FavoritesVM.swift */,
+				41533718229DF6C1006D263A /* FavoritesVC.swift */,
+				41533719229DF6C1006D263A /* FavoritesVC.xib */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		415AC4A92299582100C34F3C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +527,7 @@
 				41B882A02295EEA500FF4C33 /* General */,
 				41B882B42295FBBE00FF4C33 /* SearchLocation */,
 				41ECC692229D895F00079920 /* LocationDetail */,
+				41533717229DF690006D263A /* Favorites */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -986,6 +1020,8 @@
 				41ECC696229D898400079920 /* LocationDetailVC.xib in Resources */,
 				41ECC681229D53F700079920 /* Localizable.strings in Resources */,
 				418342892296212E0016F805 /* SearchTableViewCell.xib in Resources */,
+				4153371B229DF6C1006D263A /* FavoritesVC.xib in Resources */,
+				4118EFBC229E03E3007E60DD /* FavoriteTableViewCell.xib in Resources */,
 				41B882B92295FCA000FF4C33 /* SearchLocationVC.xib in Resources */,
 				4181139C229496820080FB01 /* Assets.xcassets in Resources */,
 				4105C771229C886F00B4C010 /* LoadingView.xib in Resources */,
@@ -1077,11 +1113,13 @@
 				41ECC691229D804C00079920 /* SortPopoverController.swift in Sources */,
 				418113972294967F0080FB01 /* SearchLocationVC.swift in Sources */,
 				41B882A62295EF6000FF4C33 /* Theme.swift in Sources */,
+				4153371A229DF6C1006D263A /* FavoritesVC.swift in Sources */,
 				41ECC67E229D498300079920 /* PositionExtension.swift in Sources */,
 				41B882AA2295F1DB00FF4C33 /* UIViewControllerExtension.swift in Sources */,
 				41ECC68E229D706800079920 /* SortType.swift in Sources */,
 				4105C76D229C87FD00B4C010 /* LoadingView.swift in Sources */,
 				4105C768229C7D3300B4C010 /* ErrorTracker.swift in Sources */,
+				4153371F229DF6E1006D263A /* FavoritesCoordinator.swift in Sources */,
 				41B882A82295EFAA00FF4C33 /* ThemeManager.swift in Sources */,
 				41B882AC2295F28D00FF4C33 /* UIViewExtension.swift in Sources */,
 				41F1341E229CAD2000AAE174 /* LocationManager.swift in Sources */,
@@ -1089,10 +1127,12 @@
 				41ECC68A229D642E00079920 /* BaseViewController.swift in Sources */,
 				41ECC695229D898400079920 /* LocationDetailVC.swift in Sources */,
 				41B882B12295F7A200FF4C33 /* AppCoordinator.swift in Sources */,
+				4118EFBB229E03E3007E60DD /* FavoriteTableViewCell.swift in Sources */,
 				41ECC685229D545600079920 /* StringExtension.swift in Sources */,
 				41ECC69A229D953D00079920 /* LocationDetailCoordinator.swift in Sources */,
 				4105C76A229C82CC00B4C010 /* ActivityTracker.swift in Sources */,
 				418113952294967F0080FB01 /* AppDelegate.swift in Sources */,
+				4153371D229DF6D0006D263A /* FavoritesVM.swift in Sources */,
 				418342882296212E0016F805 /* SearchTableViewCell.swift in Sources */,
 				41B882B32295F9EE00FF4C33 /* SearchLocationCoordinator.swift in Sources */,
 				41B882B72295FC8500FF4C33 /* SearchLocationVM.swift in Sources */,

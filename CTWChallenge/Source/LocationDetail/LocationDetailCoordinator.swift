@@ -17,13 +17,17 @@ class LocationDetailCoordinator: Coordinator {
     weak var delegate: CoordinatorDelegate?
 
     private let locationId: String
-    private let repoProvider: RepositoryProvider = RepositoryProviderImpl()
+    private let repoProvider: RepositoryProvider
 
-    init(locationId: String, navigationController: UINavigationController, delegate: CoordinatorDelegate? = nil) {
+    init(locationId: String,
+         navigationController: UINavigationController,
+         delegate: CoordinatorDelegate? = nil,
+         repoProvider: RepositoryProvider) {
         self.locationId = locationId
         self.navigationType = .navigationController(navigationController)
         self.childCoordinators = []
         self.delegate = delegate
+        self.repoProvider = repoProvider
     }
 
     func execute() {
