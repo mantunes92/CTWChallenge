@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  CTWChallenge
+
+  Created by Marcelo Antunes on 5/28/19.
+  Copyright © 2019 Marcelo Antunes. All rights reserved.
+*/
+
+// MARK: - General
+"ok.btn.title" = "Ok";
+"error.title" = "Error";
+"position.coordinates.pretty.description" = "Lat: %1$f // Long: %2$f";
+
+// MARK: - Suggestions
+"suggestions.nav.bar.item.title" = "Suggestions";
+"suggestions.search.placeholder" = "Search...";
+"suggestions.favorites.btn.title" = "Favorites";
+"suggestions.sort.btn.title" = "Sort by...";
+"suggestions.distance" = "Distance: %1$d meters";
+"suggestions.empty.list" = "No sugestions found. Please search something else";
+
+// MARK: - Location Detail
+"location.detail.nav.bar.item.title" = "Detail";
+"location.detail.street.placeholder" = "Street:";
+"location.detail.postal.code.placeholder" = "Postal Code:";
+"location.detail.coordinates.placeholder" = "Coordinates:";
+"location.detail.distance.placeholder" = "Distance:";
+"location.detail.distance.value" = "%1$f meters";
+"location.detail.save.favorite.btn.title" = "Save to favorites";
+"location.detail.remove.favorite.btn.title" = "Remove from favorites";
+
+// MARK: - Favorites
+"favorites.nav.bar.item.title" = "Favorites";
+"favorites.nav.bar.dismiss.btn.title" = "Done";

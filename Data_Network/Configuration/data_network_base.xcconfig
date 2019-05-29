@@ -1,0 +1,13 @@
+//
+//  base.xcconfig
+//  CTWChallenge
+//
+//  Created by Marcelo Antunes on 5/25/19.
+//  Copyright © 2019 Marcelo Antunes. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_ID = dTGnz6mSQNfJgzH1e668
+APP_CODE = Rx95iNWiU4w-hzBX4aBDUg
