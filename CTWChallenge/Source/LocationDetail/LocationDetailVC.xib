@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationDetailVC" customModule="CTWChallenge" customModuleProvider="target">
             <connections>
-                <outlet property="actionButton" destination="N61-oJ-L9h" id="3oG-rD-Epa"/>
                 <outlet property="coordinatesLabel" destination="SH5-S0-Ekc" id="vKY-ug-c6a"/>
                 <outlet property="coordinatesPlaceholderLabel" destination="i6s-Cs-OBs" id="zWb-9t-E5x"/>
                 <outlet property="distanceLabel" destination="6a9-Bs-gPq" id="GlL-0q-wpj"/>
@@ -20,6 +19,8 @@
                 <outlet property="mapView" destination="g0l-q4-nO6" id="fn3-hq-5gk"/>
                 <outlet property="postalCodeLabel" destination="cfX-ga-QwF" id="CfR-Xj-UrZ"/>
                 <outlet property="postalCodePlaceholderLabel" destination="aAl-HR-Lf2" id="Xem-DH-mod"/>
+                <outlet property="removeButton" destination="lJW-9g-Lrf" id="ZiR-pU-y4j"/>
+                <outlet property="saveButton" destination="N61-oJ-L9h" id="jwh-Za-9Gy"/>
                 <outlet property="streetLabel" destination="MXb-0z-csr" id="7it-eK-eDG"/>
                 <outlet property="streetPlaceholderLabel" destination="01f-x4-lfo" id="T47-Nw-We0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -49,60 +50,69 @@
                     </variation>
                 </mapView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-Yi-SW1">
-                    <rect key="frame" x="24" y="268" width="327" height="302"/>
+                    <rect key="frame" x="24" y="268" width="327" height="215"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01f-x4-lfo">
-                            <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="327" height="20.333333333333332"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rua da galhofa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXb-0z-csr">
-                            <rect key="frame" x="0.0" y="34" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="24.333333333333314" width="327" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAl-HR-Lf2">
-                            <rect key="frame" x="0.0" y="68" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="48.666666666666686" width="327" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2745-318" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfX-ga-QwF">
-                            <rect key="frame" x="0.0" y="102" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="73" width="327" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6s-Cs-OBs">
-                            <rect key="frame" x="0.0" y="136" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="97.333333333333314" width="327" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lat: -33 long: -34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH5-S0-Ekc">
-                            <rect key="frame" x="0.0" y="170" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="121.66666666666667" width="327" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tI-7R-1WG">
-                            <rect key="frame" x="0.0" y="204" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="146" width="327" height="20.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500 metros" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a9-Bs-gPq">
-                            <rect key="frame" x="0.0" y="238" width="327" height="30"/>
+                            <rect key="frame" x="0.0" y="170.33333333333331" width="327" height="20.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N61-oJ-L9h">
-                            <rect key="frame" x="0.0" y="272" width="327" height="30"/>
-                            <state key="normal" title="Button"/>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z4f-L9-JvX">
+                            <rect key="frame" x="0.0" y="194.66666666666669" width="327" height="20.333333333333343"/>
+                            <subviews>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N61-oJ-L9h">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJW-9g-Lrf">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                 </stackView>
             </subviews>

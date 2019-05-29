@@ -16,12 +16,15 @@ class SearchLocationCoordinator: Coordinator {
 
     weak var delegate: CoordinatorDelegate?
 
-    private let repoProvider: RepositoryProvider = RepositoryProviderImpl()
+    private let repoProvider: RepositoryProvider
 
-    init(navigationController: UINavigationController, delegate: CoordinatorDelegate? = nil) {
+    init(navigationController: UINavigationController,
+         delegate: CoordinatorDelegate? = nil,
+         repoProvider: RepositoryProvider) {
         self.navigationType = .navigationController(navigationController)
         self.childCoordinators = []
         self.delegate = delegate
+        self.repoProvider = repoProvider
     }
 
     func execute() {
@@ -47,8 +50,18 @@ extension SearchLocationCoordinator: SearchLocationNavigationDelegate {
         guard let navController = navigationController else { fatalError("NavigationController not set") }
         let detailCoord = LocationDetailCoordinator(locationId: locationId,
                                                     navigationController: navController,
-                                                    delegate: self)
+                                                    delegate: self,
+                                                    repoProvider: repoProvider)
         addChildCoordinator(detailCoord)
         detailCoord.execute()
+    }
+
+    func didPressFavorites() {
+        guard let navController = navigationController else { fatalError("NavigationController not set") }
+        let favoritesCoord = FavoritesCoordinator(navigationController: navController,
+                                                  delegate: self,
+                                                  repoProvider: repoProvider)
+        addChildCoordinator(favoritesCoord)
+        favoritesCoord.execute()
     }
 }

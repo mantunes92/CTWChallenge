@@ -18,21 +18,28 @@ final class LocationDetailVM {
     let postalCodePlaceholder: String = "location.detail.postal.code.placeholder".localized
     let coordinatesPlaceholder: String = "location.detail.coordinates.placeholder".localized
     let distancePlaceholder: String = "location.detail.distance.placeholder".localized
+    let saveFavoriteLocation: String = "location.detail.save.favorite.btn.title".localized
+    let removeFavoriteLocation: String = "location.detail.remove.favorite.btn.title".localized
 
-    private let repo: Domain.LocationDetailRepository
+    private let repo: Domain.LocationRepository
     private let locationId: String
 
-    init(repo: Domain.LocationDetailRepository, locationId: String) {
+    init(repo: Domain.LocationRepository, locationId: String) {
         self.repo = repo
         self.locationId = locationId
     }
 }
 
 extension LocationDetailVM: ViewModelType {
-    struct Input {}
+    struct Input {
+        let saveTrigger: Driver<Void>
+        let removeTrigger: Driver<Void>
+    }
 
     struct Output {
-        let result: Driver<AddressDetail>
+        let result: Driver<Location>
+        let save: Driver<Void>
+        let remove: Driver<Void>
         let error: Driver<Error>
         let isLoading: Driver<Bool>
     }
@@ -49,7 +56,8 @@ extension LocationDetailVM: ViewModelType {
         }
 
         let result = location
-            .flatMap { [weak self] position -> Single<AddressDetail> in
+            .asObservable()
+            .flatMap { [weak self] position -> Observable<Location> in
                 guard let self = self else { throw CtwError.unexpectedNil }
                 return self.repo.getLocationDetail(id: self.locationId,
                                                    position: position)
@@ -58,10 +66,38 @@ extension LocationDetailVM: ViewModelType {
             .trackError(errorTracker)
             .asDriverOnErrorJustComplete()
 
+        let save = input.saveTrigger.withLatestFrom(result)
+            .debounce(1)
+            .flatMapLatest({ [weak self] addressDetail -> Driver<Void> in
+                guard let self = self else { return Driver.empty() }
+                return self.repo.saveLocation(location: addressDetail)
+                    .trackActivity(activityTracker)
+                    .trackError(errorTracker)
+                    .asDriverOnErrorJustComplete()
+                    .map { _ -> Void in
+                        return ()
+                }
+            })
+
+        let remove = input.removeTrigger.withLatestFrom(result)
+            .debounce(1)
+            .flatMapLatest({ [weak self] addressDetail -> Driver<Void> in
+                guard let self = self else { return Driver.empty() }
+                return self.repo.deleteLocation(location: addressDetail)
+                    .trackActivity(activityTracker)
+                    .trackError(errorTracker)
+                    .asDriverOnErrorJustComplete()
+                    .map { _ -> Void in
+                        return ()
+                }
+            })
+
         let error = errorTracker.asDriver()
         let isLoading = activityTracker.asDriver()
 
         return Output(result: result,
+                      save: save,
+                      remove: remove,
                       error: error,
                       isLoading: isLoading)
     }

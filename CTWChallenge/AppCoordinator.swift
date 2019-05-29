@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Domain
+import Data
 
 class AppCoordinator: Coordinator {
     let navigationType: NavigationType
@@ -14,6 +16,8 @@ class AppCoordinator: Coordinator {
 
     weak var delegate: CoordinatorDelegate?
     private let window: UIWindow
+
+    private let repoProvider: RepositoryProvider = RepositoryProviderImpl()
 
     init(window: UIWindow, delegate: CoordinatorDelegate) {
         self.navigationType = .navigationController(UINavigationController())
@@ -33,7 +37,8 @@ class AppCoordinator: Coordinator {
 
     private func makeSearchLocationCoordinator(navVC: UINavigationController) -> SearchLocationCoordinator {
         let searchLocationCoordinator = SearchLocationCoordinator(navigationController: navVC,
-                                                                  delegate: self)
+                                                                  delegate: self,
+                                                                  repoProvider: repoProvider)
         return searchLocationCoordinator
     }
 }

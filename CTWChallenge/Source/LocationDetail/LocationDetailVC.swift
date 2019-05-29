@@ -29,7 +29,8 @@ class LocationDetailVC: BaseViewController {
     @IBOutlet var distancePlaceholderLabel: UILabel!
     @IBOutlet var distanceLabel: UILabel!
 
-    @IBOutlet var actionButton: UIButton!
+    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var removeButton: UIButton!
 
     //This viewModel is injected by LocationDetailCoordinator
     var viewModel: LocationDetailVM!
@@ -60,17 +61,31 @@ class LocationDetailVC: BaseViewController {
         postalCodePlaceholderLabel.text = viewModel.postalCodePlaceholder
         coordinatesPlaceholderLabel.text = viewModel.coordinatesPlaceholder
         distancePlaceholderLabel.text = viewModel.distancePlaceholder
+
+        saveButton.setTitle(viewModel.saveFavoriteLocation, for: .normal)
+        saveButton.isHidden = true
+        removeButton.setTitle(viewModel.removeFavoriteLocation, for: .normal)
+        removeButton.isHidden = true
     }
 
     private func bindViewModel() {
         assert(viewModel != nil, "viewModel cannot be nil")
-        let input = LocationDetailVM.Input()
+        let input = LocationDetailVM.Input(saveTrigger: saveButton.rx.tap.asDriver(),
+                                           removeTrigger: removeButton.rx.tap.asDriver())
 
         let output = viewModel.transform(input: input)
 
 
         output.result
             .drive(onNext: setupView)
+            .disposed(by: disposeBag)
+
+
+        output.save
+            .drive()
+            .disposed(by: disposeBag)
+        output.remove
+            .drive()
             .disposed(by: disposeBag)
 
         output.error
@@ -82,12 +97,15 @@ class LocationDetailVC: BaseViewController {
             .disposed(by: disposeBag)
     }
 
-    private func setupView(_ detail: AddressDetail) {
+    private func setupView(_ detail: Location) {
         handleMap(detail.coordinates)
         streetLabel.text = detail.street
         postalCodeLabel.text = detail.postalCode
         coordinatesLabel.text = detail.coordinates.prettyDescription
         distanceLabel.text = "location.detail.distance.value".localizedWithFormat(arguments: detail.distance)
+
+        saveButton.isHidden = detail.isFavorite
+        removeButton.isHidden = !detail.isFavorite
     }
 
     private func handleMap(_ coord: Position) {

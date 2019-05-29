@@ -16,6 +16,7 @@ import RxDataSources
 protocol SearchLocationNavigationDelegate: class {
     // Definition of navigation methods
     func didSelectLocation(_ locationId: String)
+    func didPressFavorites()
 }
 
 class SearchLocationVC: BaseViewController {
@@ -85,7 +86,7 @@ class SearchLocationVC: BaseViewController {
         navigationItem.setRightBarButton(barBtn, animated: true)
     }
     @objc private func favoritesTouched() {
-
+        navigationDelegate?.didPressFavorites()
     }
 
     private func setupSortingFilterBtn() {
